@@ -1,6 +1,6 @@
 {
   "name": "socket-adapter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yeoman environment adapter used for prompting input over socket.io sockets",
   "repository": {
     "type": "git",
