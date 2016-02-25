@@ -1,0 +1,24 @@
+{
+  "name": "socket-adapter",
+  "version": "0.1.0",
+  "description": "Yeoman environment adapter used for prompting input over socket.io sockets",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Signiant/socket-adapter.git"
+  },
+  "keywords": [
+    "yeoman",
+    "adapter",
+    "socket.io",
+    "socket"
+  ],
+  "author": "Jonathan Seed <jonathan.j.seed@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Signiant/socket-adapter/issues"
+  },
+  "homepage": "https://github.com/Signiant/socket-adapter#readme",
+  "dependencies": {
+    "yeoman-environment": "^1.5.2"
+  }
+}
