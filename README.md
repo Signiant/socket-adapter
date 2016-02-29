@@ -23,9 +23,9 @@ Any generators run in this environment will use the SocketAdapter instead of the
 ### Front end
 The socket adapter recieves an array of questions, and returns an array of answers.
 
-For each question on the array, the adapter emits a `question` on the socket and waits for an `answer`.  This process is repeated until all questions have been answered.
+For each question on the array, the adapter emits a `yo:question` on the socket and waits for an `yo:answer`.  This process is repeated until all questions have been answered.
 
-Your front end application should create a socket connection, and then wait for the first `question` event.  Once the question is recieved, a prompt must be created.  The socket adapter does not transform the questions in any way, so the method of form creation is up to the developer.  Once an answer recieved, the `answer` event should be emitted, formatting the data in a way that can be understood by the yeoman generator.
+Your front end application should create a socket connection, and then wait for the first `yo:question` event.  Once the question is recieved, a prompt must be created.  The socket adapter does not transform the questions in any way, so the method of form creation is up to the developer.  Once an answer recieved, the `yo:answer` event should be emitted, formatting the data in a way that can be understood by the yeoman generator.
 
 The transformation of data is left to the front end so that prompts are not restricted to the inquirer.js api.  For example, you may decide to create and use generators that emit questions using JSON schema, allowing for greater customization and validation.
 

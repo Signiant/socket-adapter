@@ -12,7 +12,7 @@ SocketAdapter.prototype.prompt = function(questions, done){
 };
 
 SocketAdapter.prototype.getAnswers = function(answers, questions, callback){
-  this.socket.once('answer', function(answer){
+  this.socket.once('yo:answer', function(answer){
     answers.push(JSON.parse(answer));
     if(answers.length >= questions.length){
       callback(answers);
@@ -22,7 +22,7 @@ SocketAdapter.prototype.getAnswers = function(answers, questions, callback){
 
   }.bind(this));
 
-  this.socket.emit('question', questions[answers.length]);
+  this.socket.emit('yo:question', questions[answers.length]);
 
 }
 
