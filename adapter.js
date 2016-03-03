@@ -5,26 +5,28 @@ function SocketAdapter(socket){
 }
 
 SocketAdapter.prototype.prompt = function(questions, done){
-  var answers = [];
-
-  this.getAnswers(answers, questions, done);
+  this.getAnswers({}, questions, 0, done);
 
 };
 
-SocketAdapter.prototype.getAnswers = function(answers, questions, callback){
+SocketAdapter.prototype.getAnswers = function(answers, questions, next, callback){
   this.socket.once('yo:answer', function(answer){
-    answers.push(JSON.parse(answer));
-    if(answers.length >= questions.length){
+    answers = JSON.parse(answer);
+    for(var key in answer){
+      answers[key] = answer[key];
+    }
+
+    if(++next >= questions.length){
       callback(answers);
     }else{
-      this.getAnswers(answers, questions, callback);
+      this.getAnswers(answers, questions, next, callback);
     }
 
   }.bind(this));
 
-  this.socket.emit('yo:question', questions[answers.length]);
+  this.socket.emit('yo:question', questions[next]);
 
-}
+};
 
 
 SocketAdapter.prototype.log = logger();

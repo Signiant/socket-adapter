@@ -21,7 +21,7 @@ server.listen(3000);
 Any generators run in this environment will use the SocketAdapter instead of the command line when prompting for input.  Refer to the yeoman [documentation](http://yeoman.io/authoring/integrating-yeoman.html) for more information on using environments.
 
 ### Front end
-The socket adapter recieves an array of questions, and returns an array of answers.
+The socket adapter recieves an array of questions, and returns a hash of answers.
 
 For each question on the array, the adapter emits a `yo:question` on the socket and waits for an `yo:answer`.  This process is repeated until all questions have been answered.
 
@@ -40,3 +40,4 @@ The adapter makes use of the standard logging function provided by the [yeoman-e
 ## To Do
 * sample application
 * diff function
+*logging function
