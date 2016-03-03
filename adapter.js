@@ -11,7 +11,7 @@ SocketAdapter.prototype.prompt = function(questions, done){
 
 SocketAdapter.prototype.getAnswers = function(answers, questions, next, callback){
   this.socket.once('yo:answer', function(answer){
-    answers = JSON.parse(answer);
+    answer = JSON.parse(answer);
     for(var key in answer){
       answers[key] = answer[key];
     }
