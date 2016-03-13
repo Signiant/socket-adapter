@@ -1,4 +1,5 @@
 var logger = require('yeoman-environment/lib/util/log');
+var diff = require('diff');
 
 function SocketAdapter(socket){
   this.socket = socket;
@@ -31,6 +32,9 @@ SocketAdapter.prototype.getAnswers = function(answers, questions, next, callback
 
 SocketAdapter.prototype.log = logger();
 
-SocketAdapter.prototype.diff = function(oldVer, newVer){};
+SocketAdapter.prototype.diff = function(oldLines, newLines){
+  var diffs = diff.diffLines(oldLines, newLines);
+  this.socket.emit("yo:diff", diffs);
+};
 
 module.exports = SocketAdapter;
