@@ -6,11 +6,19 @@ function SocketAdapter(socket){
 }
 
 SocketAdapter.prototype.prompt = function(questions, done){
-  this.getAnswers({}, questions, 0, done);
 
+  var promise = new Promise((resolve, reject) =>{
+    this.getAnswers({}, questions, 0, resolve);
+  });
+
+  if(done)
+    promise.then(done);
+
+  return promise;
 };
 
 SocketAdapter.prototype.getAnswers = function(answers, questions, next, callback){
+
   this.socket.once('yo:answer', function(answer){
     answer = JSON.parse(answer);
     for(var key in answer){
